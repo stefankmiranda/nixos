@@ -65,8 +65,9 @@
       ll = "eza -la";
       la = "eza -a";
       cat = "bat";
-      hms = "home-manager switch --flake ~/Projects/nixos#darwin";
-      config = "nvim ~/.zshrc";
+      hms = "home-manager switch --flake ~/nixos";
+      config = "nvim ~/nixos/modules/zsh";
+      tstart = "~/scripts/tstart";
     };
   };
 }
