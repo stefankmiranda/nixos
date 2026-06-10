@@ -23,6 +23,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 # Linux dev hosts (single-user, avoids nixbld group issues)
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --init none
+sudo chown -R $(whoami) /nix
 ```
 
 ### Uninstalling Nix
