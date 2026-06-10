@@ -33,6 +33,17 @@
         export GOPATH=$HOME/go
         export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
+        # Toolbox, scripts, AIM
+        export PATH="$HOME/.toolbox/bin:$PATH"
+        export PATH="$HOME/scripts:$PATH"
+        export PATH="$HOME/.aim/mcp-servers:$PATH"
+        export PATH="$HOME/.cargo/bin:$PATH"
+
+        # Homebrew (macOS)
+        if [[ -f /opt/homebrew/bin/brew ]]; then
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
+
         # Zoxide integration
         eval "$(zoxide init zsh)"
 
@@ -41,6 +52,9 @@
 
         # Load p10k config if it exists
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+        # Host-specific overrides (not managed by nix)
+        [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
       ''
     ];
 
