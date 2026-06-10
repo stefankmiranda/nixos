@@ -18,7 +18,26 @@ Reproducible dev environment for macOS (aarch64) and Linux (x86_64) machines usi
 Install Nix with flakes enabled:
 
 ```bash
+# macOS (multi-user, default)
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+# Linux dev hosts (single-user, avoids nixbld group issues)
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --init none
+```
+
+### Uninstalling Nix
+
+If the install failed or you need to start fresh:
+
+```bash
+/nix/nix-installer uninstall
+```
+
+If the uninstaller doesn't work, remove manually:
+
+```bash
+sudo rm -rf /nix
+rm -f ~/.local/state/nix/profiles/home-manager*
 ```
 
 ## Usage
