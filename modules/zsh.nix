@@ -53,6 +53,13 @@
         # Load p10k config if it exists
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+        # hms alias - picks the right flake profile per OS
+        if [[ "$(uname)" == "Darwin" ]]; then
+          alias hms="home-manager switch --flake ~/Projects/nixos#darwin"
+        else
+          alias hms="home-manager switch --flake ~/nixos#linux"
+        fi
+
         # Host-specific overrides (not managed by nix)
         [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
       ''
@@ -65,7 +72,6 @@
       ll = "eza -la";
       la = "eza -a";
       cat = "bat";
-      hms = "home-manager switch --flake ~/nixos";
       config = "nvim ~/nixos/modules/zsh";
       tstart = "~/scripts/tstart";
     };
